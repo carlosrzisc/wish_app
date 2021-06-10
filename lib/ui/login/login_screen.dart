@@ -6,39 +6,56 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Material(
+      color: Colors.amber,
+      child: SafeArea(
+          child: Center(
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _logo(),
+              SizedBox(height: 50),
+              _userField(),
+              SizedBox(height: 20),
+              _passwordField(),
+              SizedBox(height: 20),
+              _loginButton(),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      )),
     );
   }
+
+  Widget _logo() => Image(
+        image: AssetImage('assets/images/logo.png'),
+        height: 100,
+      );
+
+  Widget _userField() => TextField(
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), labelText: 'Username'),
+      );
+
+  Widget _passwordField() => TextField(
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), labelText: 'Password'),
+      );
+
+  Widget _loginButton() => Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                //forgot password screen
+              },
+              child: Text('Login'),
+            ),
+          ),
+        ],
+      );
 }
