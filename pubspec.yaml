@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^7.0.1
   freezed_annotation: ^0.14.2
   shared_preferences: ^2.0.6
+  url_launcher: ^6.0.4
 
 dev_dependencies:
   flutter_test:
