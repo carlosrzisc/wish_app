@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wish_app/blocs/wish_details_bloc/wish_details_bloc.dart';
+import 'package:wish_app/model/wish.dart';
 
 class WishDetailsScreen extends StatefulWidget {
+  final Wish? wish;
+
+  const WishDetailsScreen({Key? key, this.wish}) : super(key: key);
+
   @override
   _WishDetailsScreenState createState() => _WishDetailsScreenState();
 }
@@ -15,6 +20,9 @@ class _WishDetailsScreenState extends State<WishDetailsScreen> {
   @override
   void initState() {
     _bloc = WishDetailsBloc();
+
+    nameController.text = widget.wish?.name ?? "";
+    urlController.text = widget.wish?.url ?? "";
     super.initState();
   }
 
@@ -52,19 +60,7 @@ class _WishDetailsScreenState extends State<WishDetailsScreen> {
               ),
               SizedBox(height: 10),
               _error(),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _bloc.add(SaveWish(nameController.value.text,
-                            urlController.value.text));
-                      },
-                      child: Text('Add'),
-                    ),
-                  ),
-                ],
-              )
+              _button(),
             ],
           ),
         ),
@@ -80,4 +76,20 @@ class _WishDetailsScreenState extends State<WishDetailsScreen> {
         }
         return Container();
       });
+
+  Widget _button() => widget.wish != null
+      ? Container()
+      : Row(
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  _bloc.add(SaveWish(
+                      nameController.value.text, urlController.value.text));
+                },
+                child: Text('Add'),
+              ),
+            ),
+          ],
+        );
 }

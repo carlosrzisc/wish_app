@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wish_app/blocs/wish_list_bloc/wish_list_bloc.dart';
+import 'package:wish_app/model/wish.dart';
 import 'package:wish_app/ui/wish_details/wish_details_screen.dart';
 
 class WishListScreen extends StatefulWidget {
@@ -27,13 +28,17 @@ class _WishListScreenState extends State<WishListScreen> {
       floatingActionButton: new FloatingActionButton(
           child: new Icon(Icons.add),
           backgroundColor: Colors.amber,
-          onPressed: _toNewWishScreen),
+          onPressed: () => _toNewWishScreen()),
     );
   }
 
-  _toNewWishScreen() async {
+  _toNewWishScreen([Wish? wish]) async {
     await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => WishDetailsScreen()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => WishDetailsScreen(
+                  wish: wish,
+                )));
 
     _bloc.add(ShowWishList());
   }
@@ -53,20 +58,23 @@ class _WishListScreenState extends State<WishListScreen> {
               return ListView.builder(
                 itemCount: state.wishes.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      elevation: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Text(state.wishes[index].name),
-                            _urlPreview(state.wishes[index].url),
-                          ],
-                        ),
-                      ));
+                  return InkWell(
+                    onTap: () => _toNewWishScreen(state.wishes[index]),
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        elevation: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            children: [
+                              Expanded(child: Text(state.wishes[index].name)),
+                              _urlPreview(state.wishes[index].url),
+                            ],
+                          ),
+                        )),
+                  );
                 },
               );
             }
@@ -81,13 +89,12 @@ class _WishListScreenState extends State<WishListScreen> {
     if (url == null || url.isEmpty) {
       return Container();
     }
-    return InkWell(
-        child: new Text(
-          url,
-          style: TextStyle(
-              color: Colors.blue, decoration: TextDecoration.underline),
-        ),
-        onTap: () => _launchURL(url));
+    return IconButton(
+        onPressed: () => _launchURL(url),
+        icon: Icon(
+          Icons.launch,
+          color: Colors.blue,
+        ));
   }
 
   void _launchURL(String url) async =>
