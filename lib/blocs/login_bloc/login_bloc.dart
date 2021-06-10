@@ -10,6 +10,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent gEvent) async* {
-    yield* gEvent.map(login: (Login value) async* {});
+    yield* gEvent.when(login: (String user, String password) async* {
+      if (user == "testuser" && password == "test") {
+        yield LoginState.loginSuccessful();
+      } else {
+        yield LoginState.loginFailed();
+      }
+    });
   }
 }
