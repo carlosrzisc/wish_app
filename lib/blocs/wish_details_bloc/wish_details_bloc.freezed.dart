@@ -20,16 +20,12 @@ class _$WishDetailsStateTearOff {
     return const _Initial();
   }
 
-  _LoadInProgress loadInProgress() {
-    return const _LoadInProgress();
+  WishInvalid invalid() {
+    return const WishInvalid();
   }
 
-  _LoadSuccess loadSuccess() {
-    return const _LoadSuccess();
-  }
-
-  _LoadFailure loadFailure() {
-    return const _LoadFailure();
+  WishAdded added() {
+    return const WishAdded();
   }
 }
 
@@ -41,34 +37,30 @@ mixin _$WishDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
-    required TResult Function() loadFailure,
+    required TResult Function() invalid,
+    required TResult Function() added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
-    TResult Function()? loadFailure,
+    TResult Function()? invalid,
+    TResult Function()? added,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(WishInvalid value) invalid,
+    required TResult Function(WishAdded value) added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(WishInvalid value)? invalid,
+    TResult Function(WishAdded value)? added,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,9 +121,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
-    required TResult Function() loadFailure,
+    required TResult Function() invalid,
+    required TResult Function() added,
   }) {
     return initial();
   }
@@ -140,9 +131,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
-    TResult Function()? loadFailure,
+    TResult Function()? invalid,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -155,9 +145,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(WishInvalid value) invalid,
+    required TResult Function(WishAdded value) added,
   }) {
     return initial(this);
   }
@@ -166,9 +155,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(WishInvalid value)? invalid,
+    TResult Function(WishAdded value)? added,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,37 +171,37 @@ abstract class _Initial implements WishDetailsState {
 }
 
 /// @nodoc
-abstract class _$LoadInProgressCopyWith<$Res> {
-  factory _$LoadInProgressCopyWith(
-          _LoadInProgress value, $Res Function(_LoadInProgress) then) =
-      __$LoadInProgressCopyWithImpl<$Res>;
+abstract class $WishInvalidCopyWith<$Res> {
+  factory $WishInvalidCopyWith(
+          WishInvalid value, $Res Function(WishInvalid) then) =
+      _$WishInvalidCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadInProgressCopyWithImpl<$Res>
+class _$WishInvalidCopyWithImpl<$Res>
     extends _$WishDetailsStateCopyWithImpl<$Res>
-    implements _$LoadInProgressCopyWith<$Res> {
-  __$LoadInProgressCopyWithImpl(
-      _LoadInProgress _value, $Res Function(_LoadInProgress) _then)
-      : super(_value, (v) => _then(v as _LoadInProgress));
+    implements $WishInvalidCopyWith<$Res> {
+  _$WishInvalidCopyWithImpl(
+      WishInvalid _value, $Res Function(WishInvalid) _then)
+      : super(_value, (v) => _then(v as WishInvalid));
 
   @override
-  _LoadInProgress get _value => super._value as _LoadInProgress;
+  WishInvalid get _value => super._value as WishInvalid;
 }
 
 /// @nodoc
 
-class _$_LoadInProgress implements _LoadInProgress {
-  const _$_LoadInProgress();
+class _$WishInvalid implements WishInvalid {
+  const _$WishInvalid();
 
   @override
   String toString() {
-    return 'WishDetailsState.loadInProgress()';
+    return 'WishDetailsState.invalid()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadInProgress);
+    return identical(this, other) || (other is WishInvalid);
   }
 
   @override
@@ -223,24 +211,22 @@ class _$_LoadInProgress implements _LoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
-    required TResult Function() loadFailure,
+    required TResult Function() invalid,
+    required TResult Function() added,
   }) {
-    return loadInProgress();
+    return invalid();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
-    TResult Function()? loadFailure,
+    TResult Function()? invalid,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
-    if (loadInProgress != null) {
-      return loadInProgress();
+    if (invalid != null) {
+      return invalid();
     }
     return orElse();
   }
@@ -249,65 +235,60 @@ class _$_LoadInProgress implements _LoadInProgress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(WishInvalid value) invalid,
+    required TResult Function(WishAdded value) added,
   }) {
-    return loadInProgress(this);
+    return invalid(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(WishInvalid value)? invalid,
+    TResult Function(WishAdded value)? added,
     required TResult orElse(),
   }) {
-    if (loadInProgress != null) {
-      return loadInProgress(this);
+    if (invalid != null) {
+      return invalid(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadInProgress implements WishDetailsState {
-  const factory _LoadInProgress() = _$_LoadInProgress;
+abstract class WishInvalid implements WishDetailsState {
+  const factory WishInvalid() = _$WishInvalid;
 }
 
 /// @nodoc
-abstract class _$LoadSuccessCopyWith<$Res> {
-  factory _$LoadSuccessCopyWith(
-          _LoadSuccess value, $Res Function(_LoadSuccess) then) =
-      __$LoadSuccessCopyWithImpl<$Res>;
+abstract class $WishAddedCopyWith<$Res> {
+  factory $WishAddedCopyWith(WishAdded value, $Res Function(WishAdded) then) =
+      _$WishAddedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadSuccessCopyWithImpl<$Res>
-    extends _$WishDetailsStateCopyWithImpl<$Res>
-    implements _$LoadSuccessCopyWith<$Res> {
-  __$LoadSuccessCopyWithImpl(
-      _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadSuccess));
+class _$WishAddedCopyWithImpl<$Res> extends _$WishDetailsStateCopyWithImpl<$Res>
+    implements $WishAddedCopyWith<$Res> {
+  _$WishAddedCopyWithImpl(WishAdded _value, $Res Function(WishAdded) _then)
+      : super(_value, (v) => _then(v as WishAdded));
 
   @override
-  _LoadSuccess get _value => super._value as _LoadSuccess;
+  WishAdded get _value => super._value as WishAdded;
 }
 
 /// @nodoc
 
-class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess();
+class _$WishAdded implements WishAdded {
+  const _$WishAdded();
 
   @override
   String toString() {
-    return 'WishDetailsState.loadSuccess()';
+    return 'WishDetailsState.added()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadSuccess);
+    return identical(this, other) || (other is WishAdded);
   }
 
   @override
@@ -317,24 +298,22 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
-    required TResult Function() loadFailure,
+    required TResult Function() invalid,
+    required TResult Function() added,
   }) {
-    return loadSuccess();
+    return added();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
-    TResult Function()? loadFailure,
+    TResult Function()? invalid,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
-    if (loadSuccess != null) {
-      return loadSuccess();
+    if (added != null) {
+      return added();
     }
     return orElse();
   }
@@ -343,133 +322,40 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(WishInvalid value) invalid,
+    required TResult Function(WishAdded value) added,
   }) {
-    return loadSuccess(this);
+    return added(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(WishInvalid value)? invalid,
+    TResult Function(WishAdded value)? added,
     required TResult orElse(),
   }) {
-    if (loadSuccess != null) {
-      return loadSuccess(this);
+    if (added != null) {
+      return added(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadSuccess implements WishDetailsState {
-  const factory _LoadSuccess() = _$_LoadSuccess;
-}
-
-/// @nodoc
-abstract class _$LoadFailureCopyWith<$Res> {
-  factory _$LoadFailureCopyWith(
-          _LoadFailure value, $Res Function(_LoadFailure) then) =
-      __$LoadFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadFailureCopyWithImpl<$Res>
-    extends _$WishDetailsStateCopyWithImpl<$Res>
-    implements _$LoadFailureCopyWith<$Res> {
-  __$LoadFailureCopyWithImpl(
-      _LoadFailure _value, $Res Function(_LoadFailure) _then)
-      : super(_value, (v) => _then(v as _LoadFailure));
-
-  @override
-  _LoadFailure get _value => super._value as _LoadFailure;
-}
-
-/// @nodoc
-
-class _$_LoadFailure implements _LoadFailure {
-  const _$_LoadFailure();
-
-  @override
-  String toString() {
-    return 'WishDetailsState.loadFailure()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadFailure);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
-    required TResult Function() loadFailure,
-  }) {
-    return loadFailure();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
-    TResult Function()? loadFailure,
-    required TResult orElse(),
-  }) {
-    if (loadFailure != null) {
-      return loadFailure();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
-  }) {
-    return loadFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
-    required TResult orElse(),
-  }) {
-    if (loadFailure != null) {
-      return loadFailure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadFailure implements WishDetailsState {
-  const factory _LoadFailure() = _$_LoadFailure;
+abstract class WishAdded implements WishDetailsState {
+  const factory WishAdded() = _$WishAdded;
 }
 
 /// @nodoc
 class _$WishDetailsEventTearOff {
   const _$WishDetailsEventTearOff();
 
-  SaveWish save() {
-    return const SaveWish();
+  SaveWish save(String name, String url) {
+    return SaveWish(
+      name,
+      url,
+    );
   }
 }
 
@@ -478,14 +364,17 @@ const $WishDetailsEvent = _$WishDetailsEventTearOff();
 
 /// @nodoc
 mixin _$WishDetailsEvent {
+  String get name => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() save,
+    required TResult Function(String name, String url) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? save,
+    TResult Function(String name, String url)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -500,6 +389,10 @@ mixin _$WishDetailsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $WishDetailsEventCopyWith<WishDetailsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -507,6 +400,7 @@ abstract class $WishDetailsEventCopyWith<$Res> {
   factory $WishDetailsEventCopyWith(
           WishDetailsEvent value, $Res Function(WishDetailsEvent) then) =
       _$WishDetailsEventCopyWithImpl<$Res>;
+  $Res call({String name, String url});
 }
 
 /// @nodoc
@@ -517,12 +411,32 @@ class _$WishDetailsEventCopyWithImpl<$Res>
   final WishDetailsEvent _value;
   // ignore: unused_field
   final $Res Function(WishDetailsEvent) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class $SaveWishCopyWith<$Res> {
+abstract class $SaveWishCopyWith<$Res>
+    implements $WishDetailsEventCopyWith<$Res> {
   factory $SaveWishCopyWith(SaveWish value, $Res Function(SaveWish) then) =
       _$SaveWishCopyWithImpl<$Res>;
+  @override
+  $Res call({String name, String url});
 }
 
 /// @nodoc
@@ -533,42 +447,77 @@ class _$SaveWishCopyWithImpl<$Res> extends _$WishDetailsEventCopyWithImpl<$Res>
 
   @override
   SaveWish get _value => super._value as SaveWish;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(SaveWish(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SaveWish implements SaveWish {
-  const _$SaveWish();
+  const _$SaveWish(this.name, this.url);
+
+  @override
+  final String name;
+  @override
+  final String url;
 
   @override
   String toString() {
-    return 'WishDetailsEvent.save()';
+    return 'WishDetailsEvent.save(name: $name, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SaveWish);
+    return identical(this, other) ||
+        (other is SaveWish &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.url, url) ||
+                const DeepCollectionEquality().equals(other.url, url)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(url);
+
+  @JsonKey(ignore: true)
+  @override
+  $SaveWishCopyWith<SaveWish> get copyWith =>
+      _$SaveWishCopyWithImpl<SaveWish>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() save,
+    required TResult Function(String name, String url) save,
   }) {
-    return save();
+    return save(name, url);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? save,
+    TResult Function(String name, String url)? save,
     required TResult orElse(),
   }) {
     if (save != null) {
-      return save();
+      return save(name, url);
     }
     return orElse();
   }
@@ -595,5 +544,14 @@ class _$SaveWish implements SaveWish {
 }
 
 abstract class SaveWish implements WishDetailsEvent {
-  const factory SaveWish() = _$SaveWish;
+  const factory SaveWish(String name, String url) = _$SaveWish;
+
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  String get url => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  $SaveWishCopyWith<SaveWish> get copyWith =>
+      throw _privateConstructorUsedError;
 }
