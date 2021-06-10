@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wish_app/blocs/login_bloc/login_bloc.dart';
+import 'package:wish_app/ui/wish_details/wish_details_screen.dart';
 
 class WishListScreen extends StatefulWidget {
   @override
@@ -13,6 +12,15 @@ class _WishListScreenState extends State<WishListScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("WishList")),
       body: Text("WishList"),
+      floatingActionButton: new FloatingActionButton(
+          child: new Icon(Icons.add),
+          backgroundColor: Colors.amber,
+          onPressed: _toNewWishScreen),
     );
+  }
+
+  _toNewWishScreen() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => WishDetailsScreen()));
   }
 }
