@@ -61,6 +61,7 @@ class _WishListScreenState extends State<WishListScreen> {
             return ListView.builder(
               itemCount: state.wishes.length,
               itemBuilder: (context, index) {
+                final url = state.wishes[index].url;
                 return InkWell(
                   onTap: () => _toNewWishScreen(state.wishes[index]),
                   child: Card(
@@ -68,13 +69,20 @@ class _WishListScreenState extends State<WishListScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       elevation: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          children: [
-                            Expanded(child: Text(state.wishes[index].name)),
-                            _urlPreview(state.wishes[index].url),
-                          ],
+                      child: ConstrainedBox(
+                        constraints: new BoxConstraints(
+                          minHeight: 80.0,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            children: [
+                              Expanded(child: Text(state.wishes[index].name)),
+                              url == null || url.isEmpty
+                                  ? Container()
+                                  : _urlPreview(state.wishes[index].url),
+                            ],
+                          ),
                         ),
                       )),
                 );

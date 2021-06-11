@@ -18,7 +18,7 @@ class WishDetailsBloc extends Bloc<WishDetailsEvent, WishDetailsState> {
   Stream<WishDetailsState> mapEventToState(WishDetailsEvent gEvent) async* {
     yield* gEvent.when(save: (String name, String url) async* {
       bool isValid = true;
-      if (name.length == 0 || !Uri.parse(url).isAbsolute) {
+      if (name.length == 0 || (url.isNotEmpty && !Uri.parse(url).isAbsolute)) {
         yield WishDetailsState.invalid();
         isValid = false;
       }
