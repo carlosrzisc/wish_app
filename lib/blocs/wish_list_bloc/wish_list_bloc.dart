@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wish_app/model/wish.dart';
 import 'package:wish_app/model/wishes.dart';
@@ -18,6 +20,8 @@ class WishListBloc extends Bloc<WishListEvent, WishListState> {
   Stream<WishListState> mapEventToState(WishListEvent gEvent) async* {
     yield* gEvent.when(show: () async* {
       yield WishListState.listLoaded(await _loadWishList());
+    }, share: () async* {
+      _share();
     });
   }
 
@@ -29,5 +33,17 @@ class WishListBloc extends Bloc<WishListEvent, WishListState> {
     }
     final currentList = Wishes.fromJson(json.decode(wishesString));
     return currentList.wishList;
+  }
+
+  _share() async {
+    Share.share(_formatWishlistToShare(await _loadWishList()));
+  }
+
+  String _formatWishlistToShare(List<Wish> wishList) {
+    final formatList = wishList.fold(
+        "My wishlist:\n",
+        (previousValue, element) =>
+            "$previousValue\n - ${element.name}: ${element.url}");
+    return formatList;
   }
 }

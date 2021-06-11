@@ -95,12 +95,18 @@ class __$InitialCopyWithImpl<$Res> extends _$WishListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WishListState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WishListState.initial'));
   }
 
   @override
@@ -192,15 +198,23 @@ class _$ListLoadedCopyWithImpl<$Res> extends _$WishListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ListLoaded implements ListLoaded {
+class _$ListLoaded with DiagnosticableTreeMixin implements ListLoaded {
   const _$ListLoaded(this.wishes);
 
   @override
   final List<Wish> wishes;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WishListState.listLoaded(wishes: $wishes)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WishListState.listLoaded'))
+      ..add(DiagnosticsProperty('wishes', wishes));
   }
 
   @override
@@ -281,6 +295,10 @@ class _$WishListEventTearOff {
   ShowWishList show() {
     return const ShowWishList();
   }
+
+  ShareList share() {
+    return const ShareList();
+  }
 }
 
 /// @nodoc
@@ -291,22 +309,26 @@ mixin _$WishListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() show,
+    required TResult Function() share,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? show,
+    TResult Function()? share,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowWishList value) show,
+    required TResult Function(ShareList value) share,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowWishList value)? show,
+    TResult Function(ShareList value)? share,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -349,12 +371,18 @@ class _$ShowWishListCopyWithImpl<$Res> extends _$WishListEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShowWishList implements ShowWishList {
+class _$ShowWishList with DiagnosticableTreeMixin implements ShowWishList {
   const _$ShowWishList();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WishListEvent.show()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WishListEvent.show'));
   }
 
   @override
@@ -369,6 +397,7 @@ class _$ShowWishList implements ShowWishList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() show,
+    required TResult Function() share,
   }) {
     return show();
   }
@@ -377,6 +406,7 @@ class _$ShowWishList implements ShowWishList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? show,
+    TResult Function()? share,
     required TResult orElse(),
   }) {
     if (show != null) {
@@ -389,6 +419,7 @@ class _$ShowWishList implements ShowWishList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ShowWishList value) show,
+    required TResult Function(ShareList value) share,
   }) {
     return show(this);
   }
@@ -397,6 +428,7 @@ class _$ShowWishList implements ShowWishList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ShowWishList value)? show,
+    TResult Function(ShareList value)? share,
     required TResult orElse(),
   }) {
     if (show != null) {
@@ -408,4 +440,93 @@ class _$ShowWishList implements ShowWishList {
 
 abstract class ShowWishList implements WishListEvent {
   const factory ShowWishList() = _$ShowWishList;
+}
+
+/// @nodoc
+abstract class $ShareListCopyWith<$Res> {
+  factory $ShareListCopyWith(ShareList value, $Res Function(ShareList) then) =
+      _$ShareListCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ShareListCopyWithImpl<$Res> extends _$WishListEventCopyWithImpl<$Res>
+    implements $ShareListCopyWith<$Res> {
+  _$ShareListCopyWithImpl(ShareList _value, $Res Function(ShareList) _then)
+      : super(_value, (v) => _then(v as ShareList));
+
+  @override
+  ShareList get _value => super._value as ShareList;
+}
+
+/// @nodoc
+
+class _$ShareList with DiagnosticableTreeMixin implements ShareList {
+  const _$ShareList();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WishListEvent.share()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WishListEvent.share'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ShareList);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() show,
+    required TResult Function() share,
+  }) {
+    return share();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? show,
+    TResult Function()? share,
+    required TResult orElse(),
+  }) {
+    if (share != null) {
+      return share();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ShowWishList value) show,
+    required TResult Function(ShareList value) share,
+  }) {
+    return share(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ShowWishList value)? show,
+    TResult Function(ShareList value)? share,
+    required TResult orElse(),
+  }) {
+    if (share != null) {
+      return share(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShareList implements WishListEvent {
+  const factory ShareList() = _$ShareList;
 }

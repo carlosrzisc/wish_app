@@ -17,6 +17,7 @@ dependencies:
   freezed_annotation: ^0.14.2
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.4
+  share_plus: ^2.1.2
 
 dev_dependencies:
   flutter_test:

@@ -22,14 +22,19 @@ class _WishListScreenState extends State<WishListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("WishList")),
-      body: _content(),
-      floatingActionButton: new FloatingActionButton(
-          child: new Icon(Icons.add),
-          backgroundColor: Colors.amber,
-          onPressed: () => _toNewWishScreen()),
-    );
+    return BlocProvider(
+        create: (context) => _bloc,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("WishList"),
+            actions: [_shareButton()],
+          ),
+          body: _content(),
+          floatingActionButton: new FloatingActionButton(
+              child: new Icon(Icons.add),
+              backgroundColor: Colors.amber,
+              onPressed: () => _toNewWishScreen()),
+        ));
   }
 
   _toNewWishScreen([Wish? wish]) async {
@@ -46,41 +51,38 @@ class _WishListScreenState extends State<WishListScreen> {
   Widget _content() {
     return Container(
       padding: const EdgeInsets.all(20),
-      child: BlocProvider(
-        create: (context) => _bloc,
-        child: BlocBuilder<WishListBloc, WishListState>(
-          builder: (context, state) {
-            if (state is ListLoaded) {
-              if (state.wishes.length == 0) {
-                return Text(
-                    "You don't have any wishes on your list, click on the button below to add a new wish");
-              }
-              return ListView.builder(
-                itemCount: state.wishes.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () => _toNewWishScreen(state.wishes[index]),
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        elevation: 10,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Expanded(child: Text(state.wishes[index].name)),
-                              _urlPreview(state.wishes[index].url),
-                            ],
-                          ),
-                        )),
-                  );
-                },
-              );
+      child: BlocBuilder<WishListBloc, WishListState>(
+        builder: (context, state) {
+          if (state is ListLoaded) {
+            if (state.wishes.length == 0) {
+              return Text(
+                  "You don't have any wishes on your list, click on the button below to add a new wish");
             }
-            return Container();
-          },
-        ),
+            return ListView.builder(
+              itemCount: state.wishes.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () => _toNewWishScreen(state.wishes[index]),
+                  child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          children: [
+                            Expanded(child: Text(state.wishes[index].name)),
+                            _urlPreview(state.wishes[index].url),
+                          ],
+                        ),
+                      )),
+                );
+              },
+            );
+          }
+          return Container();
+        },
       ),
     );
   }
@@ -97,6 +99,24 @@ class _WishListScreenState extends State<WishListScreen> {
         ));
   }
 
+  _shareButton() {
+    return BlocBuilder<WishListBloc, WishListState>(
+      builder: (context, state) {
+        bool isEnabled = false;
+        if (state is ListLoaded && state.wishes.length > 0) {
+          isEnabled = true;
+        }
+        return isEnabled
+            ? IconButton(onPressed: _shareList, icon: Icon(Icons.share))
+            : Container();
+      },
+    );
+  }
+
   void _launchURL(String url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
+  void _shareList() {
+    _bloc.add(ShareList());
+  }
 }
